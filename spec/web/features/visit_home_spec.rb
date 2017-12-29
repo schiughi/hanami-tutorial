@@ -4,6 +4,6 @@ describe 'Visit home' do
   it 'is succuess' do
     visit '/'
 
-    page.body.must_include('BookShelf')
+    page.body.must_include('Bookshelf')
   end
 end
