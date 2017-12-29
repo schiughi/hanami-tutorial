@@ -21,6 +21,12 @@ How to run the development server:
 ```
 % bundle exec hanami server
 ```
+if you use windows:
+
+```
+% bundle exec hanami server --no-code-reloading 
+```
+
 
 How to prepare (create and migrate) DB for `development` and `test` environments:
 
