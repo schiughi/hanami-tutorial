@@ -1,11 +1,13 @@
 <h2>All books</h2>
-<div id="books">
-  <div class="book">
-    <h3>Patterns of Enterprise Application Architecture</h3>
-    by <strong>Martin Fowler</strong>
+<% if books.any? %>
+  <div id="books">
+    <% books.each do |book| %>
+      <div class="book">
+        <h2><%= book.title %></h2>
+        <%= book.isbn %>
+      </div>
+    <% end %>
   </div>
-  <div class="book">
-    <h3>Test Driven Development</h3>
-    by <strong>Kent Beck</strong>
-  </div>
-</div>
+<% else %>
+  There are no books yet.
+<% end %>
