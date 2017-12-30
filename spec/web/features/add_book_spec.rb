@@ -5,7 +5,9 @@ describe 'Add a book' do
     AuthorRepository.new.clear
     BookRepository.new.clear
     AuthorRepository.new.create(name: 'Kent Beck')
+    AuthorRepository.new.create(name: 'Eric Evans')
   end
+
   after do
     BookRepository.new.clear
   end

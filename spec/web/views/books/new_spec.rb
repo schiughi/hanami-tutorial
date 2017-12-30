@@ -5,14 +5,15 @@ class NewBookParams < Hanami::Action::Params
     required(:book).schema do
       required(:title).filled(:str?)
       required(:isbn).filled(:str?)
-      required(:author).filled
+      required(:author_id).filled
     end
   end
 end
 
 describe Web::Views::Books::New do
   let(:params)    { NewBookParams.new(book: {}) }
-  let(:exposures) { Hash[params: params] }
+  let(:authors)   { Hash['Kent Beck': 1] }
+  let(:exposures) { Hash[params: params , authors: authors] }
   let(:template)  { Hanami::View::Template.new('apps/web/templates/books/new.html.erb') }
   let(:view)      { Web::Views::Books::New.new(template, exposures) }
   let(:rendered)  { view.render }

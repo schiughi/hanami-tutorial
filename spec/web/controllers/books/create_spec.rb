@@ -3,12 +3,16 @@ require_relative '../../../spec_helper'
 describe Web::Controllers::Books::Create do
   let(:action) { Web::Controllers::Books::Create.new }
 
+  before do
+    AuthorRepository.new.clear
+    @author = AuthorRepository.new.create(name: 'test man')
+  end
   after do
     BookRepository.new.clear
   end
 
   describe 'with valid params' do
-    let(:params) { Hash[book: { title: 'Effective Ruby' , isbn: '978-4798139821' , author_id: 4}] }
+    let(:params) { Hash[book: { title: 'Effective Ruby' , isbn: '978-4798139821' , author_id: @author.id }] }
 
     it 'creates a new book' do
       action.call(params)

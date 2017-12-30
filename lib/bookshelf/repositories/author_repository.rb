@@ -12,6 +12,6 @@ class AuthorRepository < Hanami::Repository
   end
 
   def add_book(author, book)
-    assoc(:books, author).add(book).as(Book)
+    assoc(:books, author).add(book)
   end
 end
