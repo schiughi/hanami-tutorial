@@ -17,14 +17,16 @@ describe Web::Views::Books::Index do
   end
 
   describe 'when there are books' do
-    let(:book1)  { Book.new(title: 'Test Driven Development' , isbn: '978-0321146533') }
-    let(:book2)  { Book.new(title: 'Domain-Driven Design', isbn: '978-0321125217') }
+    let(:book1)  { Book.new(title: 'Test Driven Development' , isbn: '978-0321146533', author: { name: 'Kent Beck' }) }
+    let(:book2)  { Book.new(title: 'Domain-Driven Design', isbn: '978-0321125217', author: { name: 'Eric Evans' }) }
     let(:exposures) { Hash[books: [book1, book2]] }
 
     it 'lists them all' do
       rendered.scan(/class="book"/).count.must_equal 2
       rendered.must_include('Test Driven Development')
+      rendered.must_include('Kent Beck')
       rendered.must_include('Domain-Driven Design')
+      rendered.must_include('Eric Evans')
     end
 
     it 'hides the placeholder message' do

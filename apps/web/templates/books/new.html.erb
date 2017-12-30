@@ -11,16 +11,25 @@
   </div>
 <% end %>
 
-<%= form_for :book, '/books' do
-  div class: 'input' do
-    label :title
-    text_field :title
+<%=
+  form_for :book, '/books' do
+    div class: 'input' do
+      label :title
+      text_field :title
+    end
+
+    div class: 'input' do
+      label :isbn
+      text_field :isbn
+    end
+
+    div class: 'input' do
+      label :author
+      select :author, authors, class: "form-control"
+    end
+
+    div class: 'controls' do
+      submit 'Create Book'
+    end
   end
-  div class: 'input' do
-    label :isbn
-    text_field :isbn
-  end
-  div class: 'controls' do
-    submit 'Create Book'
-  end
-end %>
+%>

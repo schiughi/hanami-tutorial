@@ -1,6 +1,11 @@
 require 'features_helper'
 
 describe 'Add a book' do
+  before do
+    AuthorRepository.new.clear
+    BookRepository.new.clear
+    AuthorRepository.new.create(name: 'Kent Beck')
+  end
   after do
     BookRepository.new.clear
   end
@@ -11,7 +16,7 @@ describe 'Add a book' do
     within 'form#book-form' do
       fill_in 'Title' , with: 'New book'
       fill_in 'Isbn'  , with: '978-1111-111'
-
+      select 'Kent Beck' , from: 'Author'
       click_button 'Create'
     end
 
